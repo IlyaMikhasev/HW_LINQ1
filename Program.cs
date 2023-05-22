@@ -13,7 +13,7 @@ namespace HW_LINQ1
         files = new List<object>();
             Read(_path);
         }
-        private static Regex reg_word = new Regex(@"[^ ]*");
+        private static Regex reg_word = new Regex(@"\w*(-||_)\w*");
         public List<object> files { get; set; }
         private void Read(string _path) {
             string strFile = "";
@@ -29,7 +29,7 @@ namespace HW_LINQ1
                 {
                     if (match.Value == "")
                         continue;
-                    files.Add(match.Value);
+                    files.Add(match.Value.ToLower());
                 }
                 streamReader.Close();
             }
